@@ -81,6 +81,20 @@ export class AppwriteService {
         }
     }
 
+    async getUserPosts(userId) {
+        try {
+            return this.database.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                [
+                    Query.equal('userId', userId)
+                ]
+            )            
+        } catch (error) {
+            console.log("Appwrite Service Error :: getUserPosts :: ", error);
+        }
+    }
+
 
     // File Storage(Bucket) Services
 
