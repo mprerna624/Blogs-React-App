@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import {Logo, Container, Button} from '../index'
+import { Link } from 'react-router-dom';
 
 function Header() {
 
@@ -13,13 +14,13 @@ function Header() {
     }
 
   return (
-    <header className='w-full bg-slate-500 py-5 shadow-md'>
+    <header className='w-full bg-gray-500 py-5 shadow-md'>
         <Container className='md:flex md:justify-between md:items-center relative'>
             <div>
-                <a href="#" className='flex'>
-                    <Logo />
-                    <span className='ml-4 font-bold text-xl min-[375px]:text-2xl'>Blog React App</span>
-                </a>
+                <Link to="#" className='flex'>
+                    <Logo width='60px'/>
+                    <span className='ml-4 mt-2 font-bold text-xl min-[375px]:text-2xl'>WriteWise</span>
+                </Link>
             </div>
 
             <button 
@@ -31,19 +32,19 @@ function Header() {
 
             <nav className={`${toggleBtnOpen ? "visible h-auto" : "invisible h-0"} md:visible md:h-auto `}>
                 <ul className={`text-center md:flex`}>
-                    <li className='m-2'><a href="">Home</a></li>
+                    <li className='m-2'><Link to="/">Home</Link></li>
 
                     {
                         !isUserLoggedIn ? (
                             <>
-                                <li className='m-2'><a href="">Login</a></li>
-                                <li className='m-2'><a href="">Signup</a></li>
+                                <li className='m-2'><Link to="/login">Login</Link></li>
+                                <li className='m-2'><Link to="/signup">Signup</Link></li>
                             </>
                         ) : (
                             <>
-                                <li className='m-2'><a href="">My Posts</a></li>
-                                <li className='m-2'><a href="">Add Post</a></li>
-                                <li className='m-2'><a href="">Logout</a></li>
+                                <li className='m-2'><Link to="/">My Blogs</Link></li>
+                                <li className='m-2'><Link to="/">Add Blog</Link></li>
+                                <li className='m-2'><Link to="/">Logout</Link></li>
                             </>
                         )
                     }

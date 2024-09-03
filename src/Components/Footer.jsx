@@ -3,10 +3,10 @@ import {Logo} from './index'
 
 function Footer() {
   return (
-    <footer className='bg-slate-500 border-t-[3px] border-t-black flex justify-around flex-wrap gap-6 p-6'>
+    <footer className='bg-gray-500 border-t-[3px] border-t-black flex justify-around flex-wrap gap-6 p-6'>
       <div className='flex flex-col justify-between'>
         <Logo />
-        <p>All Copyrights reserved by DevUI.</p>
+        <p>&copy; Copyright 2024. All Rights reserved by DevUI.</p>
       </div>
 
       <div className='flex flex-wrap gap-12 justify-center'>

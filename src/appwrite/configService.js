@@ -1,4 +1,4 @@
-import { Client, Databases, ID, Query } from "appwrite";
+import { Client, Databases, Storage, ID, Query } from "appwrite";
 import conf from "../conf/conf";
 
 export class AppwriteService {
@@ -17,7 +17,7 @@ export class AppwriteService {
 
     // Database Services
 
-    async createPost({title, slug, content, featuredImage, status, userId}){
+    async createBlog({title, slug, content, featuredImage, status, userId}){
         try {
             return await this.database.createDocument(
                 conf.appwriteDatabaseId, 
@@ -26,11 +26,11 @@ export class AppwriteService {
                 {title, slug, content, featuredImage, status, userId})
 
         } catch (error) {
-            console.log("Appwrite Service Error :: createPost :: ", error);
+            console.log("Appwrite Service Error :: createBlog :: ", error);
         }
     }
 
-    async updatePost(docId, {title, slug, content, featuredImage, status}){
+    async updateBlog(docId, {title, slug, content, featuredImage, status}){
         try {
             return await this.database.updateDocument(
                 conf.appwriteDatabaseId,
@@ -39,11 +39,11 @@ export class AppwriteService {
                 {title, slug, content, featuredImage, status}
             )
         } catch (error) {
-            console.log("Appwrite Service Error :: updatePost :: ", error);
+            console.log("Appwrite Service Error :: updateBlog :: ", error);
         }
     }
 
-    async deletePost(docId) {
+    async deleteBlog(docId) {
         try {
             return await this.database.deleteDocument(
                 conf.appwriteDatabaseId,
@@ -51,11 +51,11 @@ export class AppwriteService {
                 docId
             )
         } catch (error) {
-            console.log("Appwrite Service Error :: deletePost :: ", error);
+            console.log("Appwrite Service Error :: deleteBlog :: ", error);
         }
     }
 
-    async getPost(docId) {
+    async getBlog(docId) {
         try {
             return await this.database.getDocument(
                 conf.appwriteDatabaseId,
@@ -63,11 +63,11 @@ export class AppwriteService {
                 docId
             )
         } catch (error) {
-            console.log("Appwrite Service Error :: getPost :: ", error);
+            console.log("Appwrite Service Error :: getBlog :: ", error);
         }
     }
 
-    async getActivePosts() {
+    async getActiveBlogs() {
         try {
             return this.database.listDocuments(
                 conf.appwriteDatabaseId,
@@ -77,11 +77,11 @@ export class AppwriteService {
                 ]
             )
         } catch (error) {
-            console.log("Appwrite Service Error :: getActivePosts :: ", error);
+            console.log("Appwrite Service Error :: getActiveBlogs :: ", error);
         }
     }
 
-    async getUserPosts(userId) {
+    async getUserBlogs(userId) {
         try {
             return this.database.listDocuments(
                 conf.appwriteDatabaseId,
@@ -91,7 +91,7 @@ export class AppwriteService {
                 ]
             )            
         } catch (error) {
-            console.log("Appwrite Service Error :: getUserPosts :: ", error);
+            console.log("Appwrite Service Error :: getUserBlogs :: ", error);
         }
     }
 
