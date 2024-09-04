@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import appwriteService from '../appwrite/configService';
 import { useSelector } from 'react-redux';
-import { Container } from '../Components';
+import { BlogCard, Container } from '../Components';
 
 function Home() {
 
     const [blogs, setBlogs] = useState([]);
 
-    // useEffect(() => {
-    //     appwriteService.getActiveBlogs()
-    //         .then((activeBlogs) => {
-    //             if(activeBlogs) setBlogs(activeBlogs.documents)
-    //     })
-    // }, []);
+    useEffect(() => {
+        appwriteService.getActiveBlogs()
+            .then((activeBlogs) => {
+                if(activeBlogs) setBlogs(activeBlogs.documents)
+        })
+    }, []);
 
     const isUserLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
@@ -45,9 +45,9 @@ function Home() {
   return (
     <div className='flex-grow bg-gray-400'>
         <Container>
-            <div className="grid">
+            <div className="grid gap-5" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
                 {
-                    // blogs.map((eachBlog) => {})
+                    blogs.map((eachBlog) => <BlogCard key={eachBlog.$id} {...eachBlog} />)
                 }
             </div>
         </Container>

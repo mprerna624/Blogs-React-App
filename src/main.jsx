@@ -5,7 +5,7 @@ import './index.css';
 import store from './store/store.js';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
-import  { Home, LoginPage, SignupPage } from './pages';
+import  { Home, LoginPage, MyPosts, SignupPage } from './pages';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -13,6 +13,7 @@ const router = createBrowserRouter(
       <Route path='/' element={<Home />} />
       <Route path='/login' element={<LoginPage />} />
       <Route path='/signup' element={<SignupPage />} />
+      <Route path='/my-blogs' element={<MyBlogs />} />
     </Route>
   )
 )

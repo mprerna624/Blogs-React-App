@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
-import {Logo, Container, Button} from '../index'
+import {Logo, Container, Button, LogoutBtn} from '../index'
 import { Link } from 'react-router-dom';
 
 function Header() {
@@ -42,9 +42,9 @@ function Header() {
                             </>
                         ) : (
                             <>
-                                <li className='m-2'><Link to="/">My Blogs</Link></li>
+                                <li className='m-2'><Link to="/my-blogs">My Blogs</Link></li>
                                 <li className='m-2'><Link to="/">Add Blog</Link></li>
-                                <li className='m-2'><Link to="/">Logout</Link></li>
+                                <li className="m-2"><LogoutBtn /></li>
                             </>
                         )
                     }

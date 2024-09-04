@@ -7,5 +7,6 @@ import BlogCard from "./BlogCard";
 import InputBox from "./InputBox";
 import LoginComp from "./LoginComp";
 import SignupComp from "./SignupComp";
+import LogoutBtn from "./Header/LogoutBtn";
 
-export {Header, Footer, Logo, Container, Button, BlogCard, InputBox, LoginComp, SignupComp}
+export {Header, Footer, Logo, Container, Button, BlogCard, InputBox, LoginComp, SignupComp, LogoutBtn}
