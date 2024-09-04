@@ -12,7 +12,7 @@ function InputBox({
   return (
     <div className='w-full'>
         { label && <label htmlFor={id}> {label} </label> }
-        <input type={type} id={id} className= {`block w-full p-2 rounded-lg border border-gray-200 ${className}`} {...props} ref={ref} />
+        <input type={type} id={id} className= {`block w-full mt-1 p-2 rounded-lg border border-gray-200 ${className}`} {...props} ref={ref} />
     </div>
   )
 }

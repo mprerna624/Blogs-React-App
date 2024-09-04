@@ -43,7 +43,7 @@ function Header() {
                         ) : (
                             <>
                                 <li className='m-2'><Link to="/my-blogs">My Blogs</Link></li>
-                                <li className='m-2'><Link to="/">Add Blog</Link></li>
+                                <li className='m-2'><Link to="/add-blog">Add Blog</Link></li>
                                 <li className="m-2"><LogoutBtn /></li>
                             </>
                         )
