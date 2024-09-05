@@ -7,7 +7,7 @@ function TextEditor({name, control, label, defaultValue=""}) {
     const id = useId();
 
   return (
-    <div className='w-full'>
+    <div className='w-full mb-4'>
         {
             label && (
                 <label htmlFor={id}>{label}</label>

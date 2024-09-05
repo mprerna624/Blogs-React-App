@@ -45,13 +45,15 @@ export class AppwriteService {
 
     async deleteBlog(docId) {
         try {
-            return await this.database.deleteDocument(
+            await this.database.deleteDocument(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 docId
             )
+            return true;
         } catch (error) {
             console.log("Appwrite Service Error :: deleteBlog :: ", error);
+            return false;
         }
     }
 
@@ -112,12 +114,14 @@ export class AppwriteService {
 
     async deleteFile(fileId) {
         try {
-            return await this.bucket.deleteFile(
+            await this.bucket.deleteFile(
                 conf.appwriteBucketId,
                 fileId
-            )
+            );
+            return true;
         } catch (error) {
             console.log("Appwrite Service Error :: deleteFile :: ", error);
+            return false;
         }
     }
 

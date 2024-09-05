@@ -5,7 +5,7 @@ function Footer() {
   return (
     <footer className='bg-gray-500 border-t-[3px] border-t-black flex justify-around flex-wrap gap-6 p-6'>
       <div className='flex flex-col justify-between'>
-        <Logo />
+        <Logo className='mix-blend-overlay' />
         <p>&copy; Copyright 2024. All Rights reserved by DevUI.</p>
       </div>
 

@@ -31,7 +31,7 @@ function BlogForm({blog}) {
 
             const dbBlog = await appwriteService.updateBlog(blog.$id, {
                 ...data, 
-                featuredImage: file ? file.$id : featuredImage
+                featuredImage: file ? file.$id : blog.featuredImage
             });
 
             if(dbBlog) navigate(`/blog/${dbBlog.slug}/${dbBlog.$id}`);
@@ -76,8 +76,8 @@ function BlogForm({blog}) {
     }, [watch, slugTransform, setValue])
 
   return (
-    <form onSubmit={handleSubmit(formSubmitHandler)} className='flex flex-wrap py-8'>
-        <div className="w-2/3 px-4">
+    <form onSubmit={handleSubmit(formSubmitHandler)} className='w-full py-8 lg:flex'>
+        <div className="px-4 lg:w-2/3">
             <InputBox
                 label="Title:"
                 type="text"
@@ -108,7 +108,7 @@ function BlogForm({blog}) {
             <TextEditor name="content" control={control} label="Content:" defaultValue={getValues("content")}  />
         </div>
 
-        <div className="w-1/3 px-4">
+        <div className="px-4 lg:w-1/3">
             <InputBox
                 label="Featured Image:"
                 type="file"
@@ -123,7 +123,7 @@ function BlogForm({blog}) {
             {
                 blog && (
                     <div className='w-full'>
-                        <img src={appwriteService.getFilePreview(blog.featuredImage)} alt={blog.slug} />
+                        <img src={appwriteService.getFilePreview(blog.featuredImage)} alt={blog.slug} className='w-64 h-52 rounded-xl' />
                     </div>
                 )
             }

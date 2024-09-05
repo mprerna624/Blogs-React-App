@@ -24,7 +24,6 @@ function LoginComp() {
                 if(userInfo) dispatch(storeLogin(userInfo));
                 navigate("/");
             }
-
         } catch (e) {
             setError(e.message);
         }
@@ -32,7 +31,7 @@ function LoginComp() {
 
   return (
     <div className='bg-gray-100 p-10 mx-auto my-10 rounded-xl max-w-lg w-full'>
-        <div className='rounded-md overflow-hidden flex justify-center'>
+        <div className='flex justify-center'>
             <Logo width='90px'/>
         </div>
 
