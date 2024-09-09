@@ -2,19 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { BlogCard, Container } from '../Components'
 import appwriteService from '../appwrite/configService'
 import { useSelector } from 'react-redux'
+import { useLoaderData } from 'react-router-dom'
+
+export const userBlogsLoader = async({params}) => {
+    const userId = params.userId;
+    const userBlogs = await appwriteService.getUserBlogs(userId);
+    if(userBlogs) return userBlogs.documents;
+    return [];
+}
 
 function MyBlogs() {
 
-    const userInfo = useSelector((state) => state.auth.userData);
+    // const userInfo = useSelector((state) => state.auth.userData);
 
-    const [blogs, setBlogs] = useState([]);
+    // const [blogs, setBlogs] = useState([]);
 
-    useEffect(() => {
-        appwriteService.getUserBlogs(userInfo.$id)
-            .then((userBlogs) => {
-                if(userBlogs) setBlogs(userBlogs.documents)
-            })
-    }, [])
+    // useEffect(() => {
+    //     // appwriteService.getUserBlogs(userInfo.$id)
+    //     //     .then((userBlogs) => {
+    //     //         if(userBlogs) setBlogs(userBlogs.documents)
+    //     //     })
+    // }, [userInfo.$id])
+
+    const blogs = useLoaderData();
 
   return blogs.length === 0 ? (
     <div className="flex-grow bg-gray-400 flex items-center">

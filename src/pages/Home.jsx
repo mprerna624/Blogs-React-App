@@ -2,17 +2,26 @@ import React, { useEffect, useState } from 'react';
 import appwriteService from '../appwrite/configService';
 import { useSelector } from 'react-redux';
 import { BlogCard, Container } from '../Components';
+import { useLoaderData } from 'react-router-dom';
+
+export const blogsInfoLoader = async() => {
+    const activeBlogs = await appwriteService.getActiveBlogs();
+    if(activeBlogs) return activeBlogs.documents;
+    return [];
+}
 
 function Home() {
 
-    const [blogs, setBlogs] = useState([]);
+    // const [blogs, setBlogs] = useState([]);
 
-    useEffect(() => {
-        appwriteService.getActiveBlogs()
-            .then((activeBlogs) => {
-                if(activeBlogs) setBlogs(activeBlogs.documents)
-        })
-    }, []);
+    // useEffect(() => {
+    //     appwriteService.getActiveBlogs()
+    //         .then((activeBlogs) => {
+    //             if(activeBlogs) setBlogs(activeBlogs.documents)
+    //     })
+    // }, []);
+
+    const blogs = useLoaderData();
 
     const isUserLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 

@@ -6,11 +6,16 @@ import store from './store/store.js';
 import { Provider } from 'react-redux';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import  { AddBlog, AuthLayout, Blog, EditBlog, Home, LoginPage, MyBlogs, SignupPage } from './pages';
+import { blogsInfoLoader } from './pages/Home.jsx';
+import { userBlogsLoader } from './pages/MyBlogs.jsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<App />}>
-      <Route path='/' element={<Home />} />
+      <Route path='/' 
+        element={<Home />} 
+        loader={blogsInfoLoader}
+      />
 
       <Route path='/login' 
         element={ <AuthLayout authentication={false}>
@@ -26,11 +31,12 @@ const router = createBrowserRouter(
                 } 
       />
 
-      <Route path='/my-blogs' 
+      <Route path='/my-blogs/:userId' 
         element={ <AuthLayout authentication={true}>
                     <MyBlogs />
                   </AuthLayout>
                 } 
+        loader={userBlogsLoader}
       />
 
       <Route path='/add-blog' 
