@@ -71,7 +71,7 @@ export class AppwriteService {
 
     async getActiveBlogs() {
         try {
-            return this.database.listDocuments(
+            return await this.database.listDocuments(
                 conf.appwriteDatabaseId,
                 conf.appwriteCollectionId,
                 [
